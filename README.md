@@ -48,6 +48,20 @@ learning react basics to advanced
          /> */} -->
 
 
+  <!-- // <>
+      // <div className="filter-Btn">
+      //   {/* <button
+      //     onClick={() => {
+      //       const filterRating = resObj.filter(
+      //         (res) => res.info.avgRating > 4.5
+      //       );
+      //       setResData(filterRating);
+      //     }}
+      //   > */}
+      {/* //     Top Rated Restaurant
+      //   </button>
+      // </div> */} -->
+
          -# react hook
          {
             normal js utility functions
