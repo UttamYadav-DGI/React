@@ -17,6 +17,11 @@ const Heading1=()=>(
     <h1 className="heading">radhe radhe</h1>
     </div>
 )
+const Heading3=()=>( 
+    <div id="container">
+    <h1 className="heading">radhe radhe</h1>
+    </div>
+)
 //another method to write a functional components
 const Heading2=()=>{
    return( <div id="container">
