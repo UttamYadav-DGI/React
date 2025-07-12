@@ -77,4 +77,29 @@ learning react basics to advanced
          why react fast one of the big reason is dom manipulation
          react uses reconcilation algorithm(react-fiber)
 
+         #class based component
+         it's a older version of react in last 5-6 yaears ago the code writting style is react-class components
+
+         we extends the our react component through react.components
+         and the props are inside the class 
          
+         in class-based components have a class-component render cycle
+
+         in this cycle 
+         there have a 2 phase 1---rendering  2--- commit
+         ---------1 phase-------------
+         first it's constructor method call and it's create a instance of class
+         then after render is invovked it's and render html content 
+      --------------------2 phase----------------
+         then after dom is updating or commit
+
+         then the render is successfully rendering then componentDidMount is called 
+
+         if in parentClass in render(){ there have more than 1 childClass} so it's perform optimization 
+         it;s done both constructor and rendering process for both chiidClass then it's ComponentDidMount is run for both childClass (optimize the process dom are rendering in single-batch)
+
+# create 2 bundles
+   //chunking
+   /code splitting
+   //lazy loading-: first we refer all thing then inside there i call it call grocery target link
+   //on demand loading

@@ -1795,4 +1795,6 @@ const resObj=[
                                         }
                                     }
 ]
-export default resObj;
+
+const MENU_API="https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.4743879&lng=77.50399039999999&restaurantId="
+export  {resObj,MENU_API};

@@ -2,7 +2,12 @@ import { useState, useEffect } from "react";
 import resObj from "../utils/mockData";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import { useParams,Link } from "react-router";
+
+
 const Body = () => {
+  const {resId}=useParams;
+console.log(resId);
   const [resData, setResData] = useState([]); // Initial state with mockData
   const [DummyData, setDummyData] = useState([]); // Initial state with mockData
 
@@ -16,9 +21,9 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.406498&lng=78.47724389999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const djson = await data.json();
-    console.log(djson);
+    // console.log(djson);
     const restaurants = djson?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-      console.log(restaurants) 
+      // console.log(restaurants) 
     setResData(restaurants || []);
     setDummyData(restaurants)
   };
@@ -56,10 +61,14 @@ const Body = () => {
         </div>
         <div className="Bodyy">
           {DummyData.map((restaurantObj) => (
-          <RestaurantCard
+            <Link 
+            to={`/restaurantMenu/${restaurantObj.info.id}`}
             key={restaurantObj.info.id}
+             >
+          <RestaurantCard
             resData={restaurantObj.info}
           />
+          </Link>
           ))}
         </div>
         
