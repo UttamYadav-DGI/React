@@ -5,37 +5,25 @@ import AboutClass from "./About";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import Grocery from "./Grocery";
 const Header=()=>{
-    let btnname="login"
     const [loginbtn,setloginbtn]=useState("login");
     const status=useOnlineStatus();
     return (
         <>
-        <div className="header">
-            <img className="img" src={LOGO_CDN}></img>
-            <ul>
-                <li>
-                    
-                    onlineStatus:{status ? "✅":" 🔴"}
-                </li>
-                <li>
-                    <Link to='/'>Home</Link>
-
-                </li>
-                <li> 
-                    <Link to='/about'>about Us</Link>
-                </li>
-                <li> 
-                    <Link to='/contact'>Contact Us</Link>
-                </li>
-                <li> 
-                    <Link to='/Grocery'>Grocery</Link>
-                </li>
+        <div className="flex justify-between items-center px-6 py-4 bg-white shadow-md">
+            <img className="w-25 " src={LOGO_CDN}></img>
+            <ul className="flex items-center px-3">
+                <li>onlineStatus:{status ? "✅":" 🔴"}</li>
+                
+                <li className="px-4"> <Link to='/'>Home</Link></li>
+                <li className="px-4"> <Link to='/about'>about Us</Link></li>
+                <li className="px-4">  <Link to='/contact'>Contact Us</Link></li>
+                <li className="px-4"><Link to='/Grocery'>Grocery</Link></li>
                 <button
-                        onClick={
-                            ()=>{
-                                if(loginbtn=="login")
-                                setloginbtn("logout")
-                                else setloginbtn("login")
+                onClick={
+                        ()=>{
+                            if(loginbtn=="login")
+                                 setloginbtn("logout")
+                            else setloginbtn("login")
                             }
                         }
                 >{loginbtn}</button>

@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import resObj from "../utils/mockData";
-import RestaurantCard from "./RestaurantCard";
+import {RestaurantCard,Promotion} from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { useParams,Link } from "react-router";
+import { Promotion } from "./RestaurantCard";
 
 
 const Body = () => {
@@ -12,6 +13,9 @@ console.log(resId);
   const [DummyData, setDummyData] = useState([]); // Initial state with mockData
 
   const [searchText,setSearchText]=useState("");
+
+  const RestaurantCardPromoted=Promotion(RestaurantCard);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -39,41 +43,41 @@ console.log(resId);
       
 //better approach is to show both shimmer and actual , so we use a ternary condional
   return resData.length===0 ? <Shimmer/> : (
-    <> 
-      <div className="Bodyy">
-        <div className="filter">
-          <div className="search">
-            <input type="text" className="search-box" value={searchText} 
-            onChange={
+<> 
+     <div className="flex items-center justify-center my-2">
+            <input type="text" placeholder="Search here" className="w-200 py-3 bg-gray-200 border border-gray-200 px-5 rounded-l-lg hover:border-green-800" value={searchText} 
+              onChange={
               (e)=>{setSearchText(e.target.value);}
-            }
+                }
             />
-            <button
-            onClick={()=>{
-            const filterCards=  resData.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()));
-            console.log("dafilterCards,",filterCards)
-          setDummyData(filterCards)  
-          }}
-            
+            <button className="bg-amber-300 py-3 rounded-r-lg"
+              onClick={()=>{
+                const filterCards=  resData.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()));
+             setDummyData(filterCards)  
+              }}
             >Search</button>
+      </div>
+         
+        {/* </div> filter finish here */}
 
-          </div>
-        </div>
-        <div className="Bodyy">
+        <div className="mx-20 flex flex-wrap">
           {DummyData.map((restaurantObj) => (
             <Link 
             to={`/restaurantMenu/${restaurantObj.info.id}`}
             key={restaurantObj.info.id}
              >
-          <RestaurantCard
+            {restaurantObj.info.isOpen ? (<RestaurantCardPromoted resData={restaurantObj.info}/>):
+          (<RestaurantCard
             resData={restaurantObj.info}
           />
+          )}
           </Link>
+          
           ))}
         </div>
         
-      </div>
-    </>
+</>
+    
   );
 };
 
